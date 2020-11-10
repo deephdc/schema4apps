@@ -1,0 +1,20 @@
+config:
+  credentials:
+  - id: my-dockerhub-token
+    password_var: GIT_PASS
+    type: username_password
+    username_var: GIT_USER
+  project_repos:
+    simple-java-maven-app:
+      branch: master
+      repo: https://github.com/jenkins-docs/simple-java-maven-app
+environment:
+  JPL_DOCKERPUSH: docs service1 service4
+  JPL_IGNOREFAILURES: defined
+sqa_criteria:
+  qc_style:
+    repos:
+      simple-java-maven-app:
+        commands:
+        - mvn checkstyle:check
+        container: checkstyle
