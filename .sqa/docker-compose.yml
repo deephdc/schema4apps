@@ -1,0 +1,10 @@
+services:
+  checkstyle:
+    command: sleep 600000
+    hostname: checkstyle-host
+    image: checkstyle/maven-builder-image
+    volumes:
+    - source: ./
+      target: ./simple-java-app
+      type: bind
+version: '3.7'
