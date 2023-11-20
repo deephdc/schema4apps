@@ -6,7 +6,7 @@ from jsonschema import Draft7Validator
 from jsonschema import draft7_format_checker
 
 
-SCHEMA = os.path.join(os.path.dirname(__file__), 'schemata/deep-apps.json')
+SCHEMA = os.path.join(os.path.dirname(__file__), 'schemata/ai4-apps.json')
 
 def load_json(f):
     data = f.read()

@@ -1,26 +1,27 @@
-# schema4deep
-Metadata validator for DEEP data science applications.
+# AI4 Metadata validator
+
+Metadata validator for the AI4OS hub data science applications.
 
 ## Motivation
-schema4deep validates the metadata used by the DEEP applications. The metadata
-will be eventually used by the
-[DEEP open catalog](https://marketplace.deep-hybrid-datacloud.eu/) to describe
-and give access to the applications.
+
+`ai4-metadata-validator` validates the metadata used by the AI4OS hub models
+and applications.
 
 ## Implementation
-The [schema](schemata/deep-apps.json) has been implemented according to [JSON
+
+The [schema](schemata/ai4-apps.json) has been implemented according to [JSON
 schema specification](https://json-schema.org/) (Draft 7), using [Python's
 jsonschema](https://pypi.org/project/jsonschema/) module.
 
-Once schema4deep is deployed, the `deep-app-schema-validator` CLI tool is
-provided, which accepts schema instance files as input parameters.
+Once installed, the `ai4-metadata-validator` CLI tool is provided, which
+accepts schema instance files as input parameters.
 
 ## Installation
 ```
-$ pip install git+https://github.com/deephdc/schema4apps
+$ pip install ai4-metadata-validator
 ```
 
 ## Usage
 ```
-$ deep-app-schema-validator instances/sample.mods.json
+$ ai4-metadata-validator instances/sample.mods.json
 ```
