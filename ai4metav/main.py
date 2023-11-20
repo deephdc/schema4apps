@@ -1,3 +1,5 @@
+"""Main module for AI4 metadata validator."""
+
 import argparse
 import os
 import simplejson as json
@@ -10,11 +12,13 @@ SCHEMA = os.path.join(os.path.dirname(__file__), "schemata/ai4-apps.json")
 
 
 def load_json(f):
+    """Load a JSON from the file f."""
     data = f.read()
     return json.loads(data)
 
 
 def validate():
+    """Validate the schema."""
     parser = argparse.ArgumentParser(
         description=("DEEP application metadata " "(JSON-schema based) " "validator.")
     )
