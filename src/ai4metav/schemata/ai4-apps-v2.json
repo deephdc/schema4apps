@@ -1,0 +1,111 @@
+{
+    "$schema": "http://json-schema.org/draft/2020-12/schema",
+    "definitions": {
+    },
+    "type": "object",
+    "properties": {
+        "title": {
+            "description": "Name of the Data Science application",
+            "type": "string"
+        },
+        "summary": {
+            "description": "Short text describing the value of the Data Science application",
+            "type": "string"
+        },
+        "description": {
+            "description": "Elaborated description of the Data Science application",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "links": {
+            "title": "links",
+            "type": "object",
+            "properties": {
+                "documentation": {
+                    "description": "URL pointing to the relevant documentation.",
+                    "type": "string",
+                    "format": "uri"
+                },
+                "source_code": {
+                    "description": "URL pointing to the relevant source code.",
+                    "type": "string",
+                    "format": "uri"
+                },
+                "docker_image": {
+                    "description": "URL pointing to the relevant Docker image.",
+                    "type": "string",
+                    "format": "uri"
+                },
+                "zenodo_doi": {
+                    "description": "DOI of the Zenodo record.",
+                    "type": "string",
+                    "format": "uri"
+                },
+                "dataset": {
+                    "description": "URL pointing to the relevant dataset.",
+                    "type": "string",
+                    "format": "uri"
+                },
+                "weights": {
+                    "description": "URL of file containing weights from training",
+                    "type": "string",
+                    "format": "uri"
+                },
+                "citation": {
+                    "description": "URL pointing to the relevant citation. Please use a Citation File Format (CFF) if possible.",
+                    "type": "string",
+                    "format": "uri"
+                }
+            },
+            "required": [
+                "source_code",
+                "docker_image"
+            ]   
+        },
+        "categories": {
+            "description": "Categories to best describe the Data Science application",
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+                "type": "string"
+            }
+        },
+        "date_creation": {
+            "description": "Data Science application creation date",
+            "type": "string",
+            "format": "date"
+        },
+        "keywords": {
+            "description": "Topic/s to best describe the Data Science application",
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+                "type": "string"
+            }
+        },
+        "license": {
+            "description": "License adopted by the Data Science application",
+            "type": "string"
+        }
+    },
+    "required": [
+        "title",
+        "summary",
+        "description",
+        "links",
+
+        "date_creation",
+        "keywords",
+        "license"
+    ],
+    "not": { 
+        "required": [ 
+            "tosca",
+            "sources",
+            "dataset_url",
+            "cite_url"
+        ] 
+    }
+}

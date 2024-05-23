@@ -4,11 +4,11 @@ import argparse
 import os
 import simplejson as json
 
-from jsonschema import Draft7Validator
-from jsonschema import draft7_format_checker
+from jsonschema import validators
 
 
-SCHEMA = os.path.join(os.path.dirname(__file__), "schemata/ai4-apps.json")
+SCHEMAV1 = os.path.join(os.path.dirname(__file__), "schemata/ai4-apps-v1.json")
+SCHEMAV2 = os.path.join(os.path.dirname(__file__), "schemata/ai4-apps-v2.json")
 
 
 def load_json(f):
@@ -20,7 +20,16 @@ def load_json(f):
 def validate():
     """Validate the schema."""
     parser = argparse.ArgumentParser(
-        description=("DEEP application metadata " "(JSON-schema based) " "validator.")
+        description=("AI4 application metadata " "(JSON-schema based) " "validator.")
+    )
+    # Add argument to specify the schema version to use
+    parser.add_argument(
+        "--schema",
+        metavar="SCHEMA_JSON",
+        type=argparse.FileType("r"),
+        default=SCHEMAV2,
+        help=f"AI4 application metadata schema file (default: {SCHEMAV2})",
+
     )
     parser.add_argument(
         "instance",
@@ -30,11 +39,21 @@ def validate():
         help="DEEP application metadata",
     )
     args = parser.parse_args()
+    schema = args.schema
 
-    with open(SCHEMA, "r") as f:
-        schema = load_json(f)
-    Draft7Validator.check_schema(schema)
+    try:
+        schema = load_json(schema)
+    except json.JSONDecodeError as e:
+        print(f"Error loading schema as JSON: {e}")
+        raise
+
+    try:
+        validator = validators.validator_for(schema)
+        validator.check_schema(schema)
+    except Exception as e:
+        print(f"Error validating schema: {e}")
+        raise
 
     for f in args.instance:
         instance = load_json(f)
-        Draft7Validator(schema, format_checker=draft7_format_checker).validate(instance)
+        validators.validate(instance, schema)
