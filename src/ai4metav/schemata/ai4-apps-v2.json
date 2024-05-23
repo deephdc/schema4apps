@@ -19,6 +19,11 @@
                 "type": "string"
             }
         },
+        "doi" : {
+            "description": "DOI of the Data Science application",
+            "type": "string",
+            "format": "doi"
+        },
         "links": {
             "title": "links",
             "type": "object",
