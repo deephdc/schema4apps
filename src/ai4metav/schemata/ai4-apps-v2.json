@@ -136,7 +136,8 @@
                     "Other",
                     "AI4 pre trained",
                     "AI4 trainable",
-                    "AI4 inference"
+                    "AI4 inference",
+                    "AI4 tools"
                 ]
             }
         },
