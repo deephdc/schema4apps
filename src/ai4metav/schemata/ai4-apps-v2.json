@@ -62,6 +62,11 @@
                     "description": "URL pointing to the relevant citation. Please use a Citation File Format (CFF) if possible.",
                     "type": "string",
                     "format": "uri"
+                },
+                "base_model": {
+                    "description": "URL pointing to a base model if this model is a fine-tune, adaptation, etc. of another one.",
+                    "type": "string",
+                    "format": "uri"
                 }
             },
             "required": [
