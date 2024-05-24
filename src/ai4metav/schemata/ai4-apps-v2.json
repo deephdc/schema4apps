@@ -93,16 +93,55 @@
                 "update"
             ]
         },
-        "categories": {
-            "description": "Categories to best describe the Data Science application",
+        "libraries": {
+            "description": "Libraries used in the Data Science application",
             "type": "array",
             "uniqueItems": true,
             "items": {
-                "type": "string"
+                "type": "string",
+                "enum": [
+                    "TensorFlow",
+                    "PyTorch",
+                    "Keras",
+                    "Scikit-learn",
+                    "XGBoost",
+                    "LightGBM",
+                    "CatBoost",
+                    "Other"
+                ]
             }
         },
-        "keywords": {
-            "description": "Topic/s to best describe the Data Science application",
+        "topics": {
+            "description": "Topic/s for the tasks that categorize the Data Science application",
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+                "type": "string",
+                "enum": [
+                    "Computer Vision",
+                    "Natural Language Processing",
+                    "Time Series",
+                    "Recommender Systems",
+                    "Anomaly Detection",
+                    "Regression",
+                    "Classification",
+                    "Clustering",
+                    "Dimensionality Reduction",
+                    "Generative Models",
+                    "Graph Neural Networks",
+                    "Optimization",
+                    "Reinforcement Learning",
+                    "Transfer Learning",
+                    "Uncertainty Estimation",
+                    "Other",
+                    "AI4 pre trained",
+                    "AI4 trainable",
+                    "AI4 inference"
+                ]
+            }
+        },
+        "tags": {
+            "description": "User provided tags to best describe the Data Science application",
             "type": "array",
             "uniqueItems": true,
             "items": {
@@ -119,8 +158,9 @@
         "summary",
         "description",
         "links",
-
-        "keywords",
+        "libraries",
+        "topics",
+        "tags",
         "license"
     ],
     "not": { 
