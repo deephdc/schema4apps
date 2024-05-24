@@ -170,7 +170,8 @@
             "sources",
             "dataset_url",
             "cite_url",
-            "date_creation"
+            "date_creation",
+            "keywords"
         ] 
     }
 }
