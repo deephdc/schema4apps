@@ -65,8 +65,7 @@
                 }
             },
             "required": [
-                "source_code",
-                "docker_image"
+                "source_code"
             ]   
         },
         "dates": {
