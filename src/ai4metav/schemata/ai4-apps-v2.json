@@ -74,7 +74,7 @@
             "title": "dates",
             "type": "object",
             "properties": {
-                "creation": {
+                "created": {
                     "description": "Creation date of the Data Science application",
                     "type": "string",
                     "format": "date"
@@ -86,7 +86,7 @@
                 }
             },
             "required": [
-                "creation",
+                "created",
                 "update"
             ]
         },
