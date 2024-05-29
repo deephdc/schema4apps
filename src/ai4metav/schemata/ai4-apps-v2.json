@@ -79,7 +79,7 @@
                     "type": "string",
                     "format": "date"
                 },
-                "update": {
+                "updated": {
                     "description": "Last update date of the Data Science application",
                     "type": "string",
                     "format": "date"
@@ -87,7 +87,7 @@
             },
             "required": [
                 "created",
-                "update"
+                "updated"
             ]
         },
         "libraries": {
