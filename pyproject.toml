@@ -26,3 +26,7 @@ ai4-metadata-validator = "ai4metav.main:validate"
 
 [project.urls]
 Homepage = "https://github.com/ai4os/ai4-metadata-validator"
+
+# Include schematas in the package
+[tool.setuptools.package-data]
+ai4metav = ["schemata/*.json"]
