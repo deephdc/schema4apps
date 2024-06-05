@@ -5,7 +5,6 @@
     "libraries": ["TensorFlow", "Keras"],
     "topics": ["Anomaly Detection", "Time Series"],
     "tags": ["security", "networks", "cybersecurity", "anomaly detection", "time-series prediction"],
-    "license": "Apache-2.0",
     "dates": {
         "created": "2019-02-19",
         "updated": "2024-02-19"

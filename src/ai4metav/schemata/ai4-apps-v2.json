@@ -157,14 +157,14 @@
         "tags"
     ],
     "not": { 
-        "required": [ 
-            "tosca",
-            "sources",
-            "dataset_url",
-            "cite_url",
-            "date_creation",
-            "keywords",
-            "license"
-        ] 
+        "anyOf": [
+            { "required": ["tosca"] },
+            { "required": ["sources"] },
+            { "required": ["dataset_url"] },
+            { "required": ["cite_url"] },
+            { "required": ["date_creation"] },
+            { "required": ["keywords"] },
+            { "required": ["license"] }   
+        ]
     }
 }
