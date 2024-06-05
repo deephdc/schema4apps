@@ -108,7 +108,7 @@
                 ]
             }
         },
-        "topics": {
+        "tasks": {
             "description": "Topic/s for the tasks that categorize the Data Science application.",
             "type": "array",
             "uniqueItems": true,
@@ -130,7 +130,17 @@
                     "Reinforcement Learning",
                     "Transfer Learning",
                     "Uncertainty Estimation",
-                    "Other",
+                    "Other"
+                ]
+            }
+        },
+        "categories": {
+            "description": "Platform categories for the tasks that categorize the Data Science application.",
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+                "type": "string",
+                "enum": [
                     "AI4 pre trained",
                     "AI4 trainable",
                     "AI4 inference",
@@ -145,6 +155,24 @@
             "items": {
                 "type": "string"
             }
+        },
+        "data-type": {
+            "description": "Data type used in the Data Science application.",
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+                "type": "string",
+                "enum": [
+                    "Image",
+                    "Text",
+                    "Time Series",
+                    "Tabular",
+                    "Graph",
+                    "Audio",
+                    "Video",
+                    "Other"
+                ]
+            }
         }
     },
     "required": [
@@ -153,7 +181,8 @@
         "description",
         "links",
         "libraries",
-        "topics",
+        "tasks",
+        "categories",
         "tags"
     ],
     "not": { 
