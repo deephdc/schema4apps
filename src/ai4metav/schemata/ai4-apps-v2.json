@@ -145,30 +145,6 @@
             "items": {
                 "type": "string"
             }
-        },
-        "license": {
-            "description": "License adopted by the Data Science application.",
-            "type": "string",
-            "enum": [
-                "Apache-2.0",
-                "BSD-2-Clause",
-                "BSD-3-Clause",
-                "GPL-2.0",
-                "GPL-3.0",
-                "LGPL-2.1",
-                "LGPL-3.0",
-                "MIT",
-                "MPL-2.0",
-                "CDDL-1.0",
-                "EPL-2.0",
-                "Proprietary",
-                "Other"
-            ]
-        },
-        "license_link": {
-            "description": "URL pointing to the license adopted by the Data Science application.",
-            "type": "string",
-            "format": "uri"
         }
     },
     "required": [
@@ -178,8 +154,7 @@
         "links",
         "libraries",
         "topics",
-        "tags",
-        "license"
+        "tags"
     ],
     "not": { 
         "required": [ 
@@ -188,7 +163,8 @@
             "dataset_url",
             "cite_url",
             "date_creation",
-            "keywords"
+            "keywords",
+            "license"
         ] 
     }
 }
