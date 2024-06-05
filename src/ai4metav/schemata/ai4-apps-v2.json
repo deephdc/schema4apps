@@ -5,19 +5,19 @@
     "type": "object",
     "properties": {
         "title": {
-            "description": "Name of the Data Science application",
+            "description": "Name of the Data Science application.",
             "type": "string"
         },
         "summary": {
-            "description": "Short text describing the value of the Data Science application",
+            "description": "Short text describing the value of the Data Science application.",
             "type": "string"
         },
         "description": {
-            "description": "Elaborated description of the Data Science application",
+            "description": "Elaborated description of the Data Science application.",
             "type": "string"
         },
         "doi" : {
-            "description": "DOI of the Data Science application",
+            "description": "DOI of the Data Science application.",
             "type": "string",
             "format": "doi"
         },
@@ -75,12 +75,12 @@
             "type": "object",
             "properties": {
                 "created": {
-                    "description": "Creation date of the Data Science application",
+                    "description": "Creation date of the Data Science application.",
                     "type": "string",
                     "format": "date"
                 },
                 "updated": {
-                    "description": "Last update date of the Data Science application",
+                    "description": "Last update date of the Data Science application.",
                     "type": "string",
                     "format": "date"
                 }
@@ -91,7 +91,7 @@
             ]
         },
         "libraries": {
-            "description": "Libraries used in the Data Science application",
+            "description": "Libraries used in the Data Science application.",
             "type": "array",
             "uniqueItems": true,
             "items": {
@@ -109,7 +109,7 @@
             }
         },
         "topics": {
-            "description": "Topic/s for the tasks that categorize the Data Science application",
+            "description": "Topic/s for the tasks that categorize the Data Science application.",
             "type": "array",
             "uniqueItems": true,
             "items": {
@@ -139,7 +139,7 @@
             }
         },
         "tags": {
-            "description": "User provided tags to best describe the Data Science application",
+            "description": "User provided tags to best describe the Data Science application.",
             "type": "array",
             "uniqueItems": true,
             "items": {
@@ -147,7 +147,7 @@
             }
         },
         "license": {
-            "description": "License adopted by the Data Science application",
+            "description": "License adopted by the Data Science application.",
             "type": "string",
             "enum": [
                 "Apache-2.0",
@@ -166,7 +166,7 @@
             ]
         },
         "license_link": {
-            "description": "URL pointing to the license adopted by the Data Science application",
+            "description": "URL pointing to the license adopted by the Data Science application.",
             "type": "string",
             "format": "uri"
         }
