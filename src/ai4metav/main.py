@@ -29,7 +29,7 @@ def validate():
     )
 
     version_group = parser.add_mutually_exclusive_group()
-    # Add argument to specify the schema version to use
+
     version_group.add_argument(
         "--schema",
         metavar="SCHEMA_JSON",
@@ -38,7 +38,6 @@ def validate():
              "If set, overrides --metadata-version."
     )
 
-    # Add argument to specify version of the metadata to use
     version_group.add_argument(
         "--metadata-version",
         metavar="VERSION",
