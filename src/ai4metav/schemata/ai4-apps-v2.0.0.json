@@ -11,20 +11,24 @@
         },
         "title": {
             "description": "Name of the Data Science application.",
-            "type": "string"
+            "type": "string",
+            "user_friendly": "Title"
         },
         "summary": {
             "description": "Short text describing the value of the Data Science application.",
-            "type": "string"
+            "type": "string",
+            "user_friendly": "Summary"
         },
         "description": {
             "description": "Elaborated description of the Data Science application.",
-            "type": "string"
+            "type": "string",
+            "user_friendly": "Description"
         },
         "doi" : {
             "description": "DOI of the Data Science application.",
             "type": "string",
-            "format": "doi"
+            "format": "doi",
+            "user_friendly": "Digital Object Identifier"
         },
         "links": {
             "title": "links",
@@ -33,42 +37,50 @@
                 "documentation": {
                     "description": "URL pointing to the relevant documentation.",
                     "type": "string",
-                    "format": "uri"
+                    "format": "uri",
+                    "user_friendly": "Documentation URL"
                 },
                 "source_code": {
                     "description": "URL pointing to the relevant source code.",
                     "type": "string",
-                    "format": "uri"
+                    "format": "uri",
+                    "user_friendly": "Source Code URL"
                 },
                 "docker_image": {
                     "description": "URL pointing to the relevant Docker image.",
                     "type": "string",
-                    "format": "uri"
+                    "format": "uri",
+                    "user_friendly": "Docker Image URL"
                 },
                 "zenodo_doi": {
                     "description": "DOI of the Zenodo record.",
                     "type": "string",
-                    "format": "uri"
+                    "format": "uri",
+                    "user_friendly": "Link to Zenodo DOI"
                 },
                 "dataset": {
-                    "description": "URL pointing to the relevant dataset.",
+                    "description": "URL pointing to the relevant training dataset.",
                     "type": "string",
-                    "format": "uri"
+                    "format": "uri",
+                    "user_friendly": "Traning Dataset URL"
                 },
                 "weights": {
                     "description": "URL of file containing weights from training",
                     "type": "string",
-                    "format": "uri"
+                    "format": "uri",
+                    "user_friendly": "Weights URL"
                 },
                 "citation": {
                     "description": "URL pointing to the relevant citation. Please use a Citation File Format (CFF) if possible.",
                     "type": "string",
-                    "format": "uri"
+                    "format": "uri",
+                    "user_friendly": "Citation URL"
                 },
                 "base_model": {
                     "description": "URL pointing to a base model if this model is a fine-tune, adaptation, etc. of another one.",
                     "type": "string",
-                    "format": "uri"
+                    "format": "uri",
+                    "user_friendly": "Base Model URL"
                 }
             },
             "required": [
@@ -82,12 +94,14 @@
                 "created": {
                     "description": "Creation date of the Data Science application.",
                     "type": "string",
-                    "format": "date"
+                    "format": "date",
+                    "user_friendly": "Creation Date"
                 },
                 "updated": {
                     "description": "Last update date of the Data Science application.",
                     "type": "string",
-                    "format": "date"
+                    "format": "date",
+                    "user_friendly": "Last Update Date"
                 }
             },
             "required": [
@@ -111,7 +125,8 @@
                     "CatBoost",
                     "Other"
                 ]
-            }
+            },
+            "user_friendly": "Libraries used"
         },
         "tasks": {
             "description": "Topic/s for the tasks that categorize the Data Science application.",
@@ -137,7 +152,8 @@
                     "Uncertainty Estimation",
                     "Other"
                 ]
-            }
+            },
+            "user_friendly": "Model Tasks"
         },
         "categories": {
             "description": "Platform categories for the tasks that categorize the Data Science application.",
@@ -151,7 +167,8 @@
                     "AI4 inference",
                     "AI4 tools"
                 ]
-            }
+            },
+            "user_friendly": "AI4 Platform Categories"
         },
         "tags": {
             "description": "User provided tags to best describe the Data Science application.",
@@ -177,7 +194,8 @@
                     "Video",
                     "Other"
                 ]
-            }
+            },
+            "user_friendly": "Data Type"
         }
     },
     "required": [
