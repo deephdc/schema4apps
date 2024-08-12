@@ -7,8 +7,12 @@ import simplejson as json
 from jsonschema import validators
 
 
-SCHEMAV1 = os.path.join(os.path.dirname(__file__), "schemata/ai4-apps-v1.json")
-SCHEMAV2 = os.path.join(os.path.dirname(__file__), "schemata/ai4-apps-v2.json")
+VERSIONS = {
+    "1.0.0": os.path.join(os.path.dirname(__file__), "schemata/ai4-apps-v1.0.0.json"),
+    "2.0.0": os.path.join(os.path.dirname(__file__), "schemata/ai4-apps-v2.0.0.json"),
+}
+
+LATEST_VERSION = "2.0.0"
 
 
 def load_json(f):
@@ -22,15 +26,26 @@ def validate():
     parser = argparse.ArgumentParser(
         description=("AI4 application metadata " "(JSON-schema based) " "validator.")
     )
+
+    version_group = parser.add_mutually_exclusive_group()
     # Add argument to specify the schema version to use
-    parser.add_argument(
+    version_group.add_argument(
         "--schema",
         metavar="SCHEMA_JSON",
         type=argparse.FileType("r"),
-        default=SCHEMAV2,
-        help=f"AI4 application metadata schema file (default: {SCHEMAV2})",
-
+        help="AI4 application metadata schema file to use. "
+             "If set, overrides --metadata-version."
     )
+
+    # Add argument to specify version of the metadata to use
+    version_group.add_argument(
+        "--metadata-version",
+        metavar="VERSION",
+        choices=VERSIONS.keys(),
+        default=LATEST_VERSION,
+        help=f"AI4 application metadata version (default: {LATEST_VERSION})",
+    )
+
     parser.add_argument(
         "instance",
         metavar="METADATA_JSON",
@@ -39,7 +54,8 @@ def validate():
         help="DEEP application metadata",
     )
     args = parser.parse_args()
-    schema = args.schema
+
+    schema = args.schema or open(VERSIONS[args.metadata_version])
 
     try:
         schema = load_json(schema)

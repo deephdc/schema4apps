@@ -4,6 +4,10 @@
     },
     "type": "object",
     "properties": {
+        "metadata_version": {
+            "description": "Version of the metadata schema.",
+            "type": "string"
+        },
         "title": {
             "description": "Name of the Data Science application.",
             "type": "string"
@@ -176,6 +180,7 @@
         }
     },
     "required": [
+        "metadata_version",
         "title",
         "summary",
         "description",
