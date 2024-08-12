@@ -32,7 +32,7 @@ classifiers = [
 "Bug Tracker" = "https://github.com/ai4os/ai4-metadata/issues"
 
 [tool.poetry.scripts]
-ai4-metadata-validator = "ai4_metadata.main:validate"
+ai4-metadata-validator = "ai4_metadata.validate:main"
 
 [tool.poetry.dependencies]
 python = "^3.10"

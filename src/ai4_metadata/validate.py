@@ -4,6 +4,7 @@ import argparse
 import os
 import simplejson as json
 import sys
+import typing
 
 from jsonschema import validators
 
@@ -16,14 +17,32 @@ VERSIONS = {
 LATEST_VERSION = "2.0.0"
 
 
-def load_json(f):
+def load_json(f: typing.TextIO) -> typing.Dict:
     """Load a JSON from the file f."""
     data = f.read()
     return json.loads(data)
 
 
-def validate():
+def validate(instance: object, schema_file: typing.TextIO) -> None:
     """Validate the schema."""
+    try:
+        schema = load_json(schema_file)
+    except json.JSONDecodeError as e:
+        print(f"Error loading schema as JSON: {e}")
+        raise
+
+    try:
+        validator = validators.validator_for(schema)
+        validator.check_schema(schema)
+    except Exception as e:
+        print(f"Error validating schema: {e}")
+        raise
+
+    validators.validate(instance, schema)
+
+
+def main() -> None:
+    """Main entry point for the validator.  """
     parser = argparse.ArgumentParser(
         description=("AI4 application metadata (JSON-schema based) validator.")
     )
@@ -64,24 +83,11 @@ def validate():
 
     schema = args.schema or open(VERSIONS[args.metadata_version])
 
-    try:
-        schema = load_json(schema)
-    except json.JSONDecodeError as e:
-        print(f"Error loading schema as JSON: {e}")
-        raise
-
-    try:
-        validator = validators.validator_for(schema)
-        validator.check_schema(schema)
-    except Exception as e:
-        print(f"Error validating schema: {e}")
-        raise
-
     exit_code = 0
     for f in args.instance:
         try:
             instance = load_json(f)
-            validators.validate(instance, schema)
+            validate(instance, schema)
         except Exception as e:
             print(f"Error validating instance: {e}")
             exit_code = 1
