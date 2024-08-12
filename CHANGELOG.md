@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.1](https://github.com/ai4os/ai4-metadata/compare/v2.0.0...v2.0.1) (2024-08-12)
+
+
+### Bug Fixes
+
+* typo on Python classifier ([c36e40e](https://github.com/ai4os/ai4-metadata/commit/c36e40efa83cbb6055225cb2cdefade94c1ee6c3))
+
 ## [2.0.0](https://github.com/ai4os/ai4-metadata/compare/1.0.0...v2.0.0) (2024-08-12)
 
 
