@@ -3,6 +3,7 @@
 import argparse
 import os
 import simplejson as json
+import sys
 
 from jsonschema import validators
 
@@ -47,6 +48,13 @@ def validate():
     )
 
     parser.add_argument(
+        "--quiet",
+        "-q",
+        action="store_true",
+        help="Suppress output for valid instances",
+    )
+
+    parser.add_argument(
         "instance",
         metavar="METADATA_JSON",
         type=argparse.FileType("r"),
@@ -70,6 +78,16 @@ def validate():
         print(f"Error validating schema: {e}")
         raise
 
+    exit_code = 0
     for f in args.instance:
-        instance = load_json(f)
-        validators.validate(instance, schema)
+        try:
+            instance = load_json(f)
+            validators.validate(instance, schema)
+        except Exception as e:
+            print(f"Error validating instance: {e}")
+            exit_code = 1
+        else:
+            if not args.quiet:
+                print(f"{f.name} is valid for version {args.metadata_version}")
+
+    sys.exit(exit_code)
