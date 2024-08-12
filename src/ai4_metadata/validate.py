@@ -1,35 +1,18 @@
 """Main module for AI4 metadata validator."""
 
 import argparse
-import os
-import simplejson as json
 import sys
 import typing
 
 from jsonschema import validators
 
-
-VERSIONS = {
-    "1.0.0": os.path.join(os.path.dirname(__file__), "schemata/ai4-apps-v1.0.0.json"),
-    "2.0.0": os.path.join(os.path.dirname(__file__), "schemata/ai4-apps-v2.0.0.json"),
-}
-
-LATEST_VERSION = "2.0.0"
-
-
-def load_json(f: typing.TextIO) -> typing.Dict:
-    """Load a JSON from the file f."""
-    data = f.read()
-    return json.loads(data)
+import ai4_metadata
+from ai4_metadata import utils
 
 
 def validate(instance: object, schema_file: typing.TextIO) -> None:
     """Validate the schema."""
-    try:
-        schema = load_json(schema_file)
-    except json.JSONDecodeError as e:
-        print(f"Error loading schema as JSON: {e}")
-        raise
+    schema = utils.load_json(schema_file)
 
     try:
         validator = validators.validator_for(schema)
@@ -42,7 +25,7 @@ def validate(instance: object, schema_file: typing.TextIO) -> None:
 
 
 def main() -> None:
-    """Main entry point for the validator.  """
+    """Validate the AI4 metadata schema via CLI."""
     parser = argparse.ArgumentParser(
         description=("AI4 application metadata (JSON-schema based) validator.")
     )
@@ -60,9 +43,10 @@ def main() -> None:
     version_group.add_argument(
         "--metadata-version",
         metavar="VERSION",
-        choices=VERSIONS.keys(),
-        default=LATEST_VERSION,
-        help=f"AI4 application metadata version (default: {LATEST_VERSION})",
+        choices=ai4_metadata.get_all_versions(),
+        default=ai4_metadata.get_latest_version(),
+        help="AI4 application metadata version "
+        f"(default: {ai4_metadata.get_latest_version()})",
     )
 
     parser.add_argument(
@@ -77,16 +61,16 @@ def main() -> None:
         metavar="METADATA_JSON",
         type=argparse.FileType("r"),
         nargs="+",
-        help="DEEP application metadata",
+        help="AI4 application metadata file to validate.",
     )
     args = parser.parse_args()
 
-    schema = args.schema or open(VERSIONS[args.metadata_version])
+    schema = args.schema or open(ai4_metadata.get_schema(args.metadata_version), "r")
 
     exit_code = 0
     for f in args.instance:
         try:
-            instance = load_json(f)
+            instance = utils.load_json(f)
             validate(instance, schema)
         except Exception as e:
             print(f"Error validating instance: {e}")

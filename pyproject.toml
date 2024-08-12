@@ -33,6 +33,7 @@ classifiers = [
 
 [tool.poetry.scripts]
 ai4-metadata-validator = "ai4_metadata.validate:main"
+ai4-metadata-migrate = "ai4_metadata.migrate:main"
 
 [tool.poetry.dependencies]
 python = "^3.10"
