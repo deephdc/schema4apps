@@ -1,12 +1,12 @@
 {
     "$schema": "http://json-schema.org/draft/2020-12/schema",
-    "$id": "https://github.com/ai4os/ai4-metadata/blob/master/src/ai4metav/schemata/ai4-apps-v2.0.0.json"
-    "definitions": {
-    },
+    "$id": "https://github.com/ai4os/ai4-metadata/blob/master/src/ai4metav/schemata/ai4-apps-v2.0.0.json",
     "type": "object",
     "properties": {
         "metadata_version": {
             "description": "Version of the metadata schema.",
+            "pattern": "^[0-9]{1,}.[0-9]{1,}.[0-9]{1,}$",
+            "example": "2.0.0",
             "type": "string"
         },
         "title": {
