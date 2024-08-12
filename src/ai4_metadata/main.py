@@ -35,7 +35,7 @@ def validate():
         metavar="SCHEMA_JSON",
         type=argparse.FileType("r"),
         help="AI4 application metadata schema file to use. "
-             "If set, overrides --metadata-version."
+        "If set, overrides --metadata-version.",
     )
 
     version_group.add_argument(
