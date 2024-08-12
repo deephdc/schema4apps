@@ -25,7 +25,7 @@ def load_json(f):
 def validate():
     """Validate the schema."""
     parser = argparse.ArgumentParser(
-        description=("AI4 application metadata " "(JSON-schema based) " "validator.")
+        description=("AI4 application metadata (JSON-schema based) validator.")
     )
 
     version_group = parser.add_mutually_exclusive_group()
