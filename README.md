@@ -1,5 +1,7 @@
 # AI4 Metadata utilities
 
+[![DOI](https://zenodo.org/badge/721337407.svg)](https://zenodo.org/doi/10.5281/zenodo.13343453)
+
 Metadata utilities for the AI4OS hub data science applications.
 
 The AI4OS hub data science applications use metadata to describe the data
