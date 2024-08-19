@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.2](https://github.com/ai4os/ai4-metadata/compare/v2.0.1...v2.0.2) (2024-08-19)
+
+
+### Miscellaneous Chores
+
+* release 2.0.2 ([adac436](https://github.com/ai4os/ai4-metadata/commit/adac43662dc911874707e16840d65222d3438ac1))
+
 ## [2.0.1](https://github.com/ai4os/ai4-metadata/compare/v2.0.0...v2.0.1) (2024-08-12)
 
 
