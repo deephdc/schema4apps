@@ -44,3 +44,9 @@ To save the output, use the `--output` option.
 
 Please review the changes, as the metadata migration is not complete, and
 manual steps are needed.
+
+## Acknowledgements
+
+<img width=300 align="left" src="https://raw.githubusercontent.com/AI4EOSC/.github/ai4eosc/profile/EN-Funded.jpg" alt="Funded by the European Union" />
+
+This project has received funding from the European Union’s Horizon Research and Innovation programme under Grant agreement No. [101058593](https://cordis.europa.eu/project/id/101058593)
