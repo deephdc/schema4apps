@@ -1,20 +1,19 @@
 """Migrate metadata from V1 to V2."""
 
-import argparse
 import collections
 import datetime
-import sys
-
-import simplejson as json
+import pathlib
+import typing
 
 import ai4_metadata
 from ai4_metadata import utils
-from ai4_metadata import validate
 
 
-def migrate(v1_metadata: dict) -> collections.OrderedDict:
+def migrate(instance_file: pathlib.Path) -> collections.OrderedDict:
     """Try to migrate metadata from V1 to latest V2."""
-    v2 = collections.OrderedDict()
+    v1_metadata = utils.load_json(instance_file)
+
+    v2: collections.OrderedDict[str, typing.Any] = collections.OrderedDict()
 
     v2["metadata_version"] = ai4_metadata.get_latest_version()
     v2["title"] = v1_metadata.get("title")
@@ -70,44 +69,3 @@ def migrate(v1_metadata: dict) -> collections.OrderedDict:
         v2["categories"].append("AI4 pre trained")
 
     return v2
-
-
-def main() -> None:
-    """Convert metadata from V1 to latest V2."""
-    parser = argparse.ArgumentParser(
-        description=(
-            "Migrate AI4 metadata from V1 to latest V2 (currently "
-            f"{ai4_metadata.get_latest_version()})."
-        )
-    )
-
-    parser.add_argument(
-        "--output",
-        "-o",
-        metavar="OUTPUT_JSON",
-        type=argparse.FileType("w"),
-        default=sys.stdout,
-        help="Output file for migrated metadata, default is stdout.",
-    )
-
-    parser.add_argument(
-        "instance",
-        metavar="METADATA_JSON",
-        type=argparse.FileType("r"),
-        help="AI4 application metadata file to migrate.",
-    )
-
-    args = parser.parse_args()
-
-    v1_metadata = utils.load_json(args.instance)
-    v1_schema = open(ai4_metadata.get_schema("1.0.0"), "r")
-    validate.validate(v1_metadata, v1_schema)
-    print("V1 metadata is valid, continuing with migration...")
-
-    # Migrate metadata
-    v2_metadata = migrate(v1_metadata)
-    v2_schema = open(ai4_metadata.get_schema(ai4_metadata.get_latest_version()), "r")
-    validate.validate(v2_metadata, v2_schema)
-
-    # Write out the migrated metadata
-    json.dump(v2_metadata, args.output, indent=4)

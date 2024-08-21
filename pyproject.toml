@@ -32,14 +32,15 @@ classifiers = [
 "Bug Tracker" = "https://github.com/ai4os/ai4-metadata/issues"
 
 [tool.poetry.scripts]
-ai4-metadata-validator = "ai4_metadata.validate:main"
-ai4-metadata-migrate = "ai4_metadata.migrate:main"
+ai4-metadata-validator = "ai4_metadata.cli:validate_main"
+ai4-metadata-migrate = "ai4_metadata.cli:migrate_main"
+ai4-metadata = "ai4_metadata.cli:app"
 
 [tool.poetry.dependencies]
 python = "^3.10"
 jsonschema = "^4.23.0"
 rfc3987 = "^1.3.8"
-simplejson = "^3.19.2"
+typer = "^0.12.4"
 
 [tool.poetry.group.dev.dependencies]
 tox = "^4.17.1"

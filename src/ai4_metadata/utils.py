@@ -1,15 +1,27 @@
 """Utility functions for the AI4 Metadata utils."""
 
+import json
+import pathlib
 import typing
 
-import simplejson as json
+import typer
 
 
-def load_json(f: typing.TextIO) -> typing.Dict:
+def load_json(path: typing.Union[str, pathlib.Path]) -> typing.Dict:
     """Load a JSON from the file f."""
+    file = open(path, "r")
     try:
-        data = f.read()
+        data = file.read()
         return json.loads(data)
     except json.JSONDecodeError as e:
-        print(f"Error loading schema as JSON: {e}")
-        raise
+        typer.secho(f"Error loading schema as JSON: {e}", fg=typer.colors.RED, err=True)
+        raise e
+
+
+def dump_json(data: typing.Dict, path: typing.Optional[pathlib.Path] = None) -> None:
+    """Dump a JSON object to stdout or to path if provided."""
+    if path is None:
+        typer.echo(json.dumps(data, indent=4))
+    else:
+        with open(path, "w") as f:
+            json.dump(data, f, indent=4)

@@ -10,7 +10,7 @@ from ai4_metadata import validate
 @pytest.fixture
 def valid_schema_file():
     """Fixture for a valid schema file."""
-    return open(pathlib.Path(__file__).parent / "../schemata/ai4-apps-v2.0.0.json", "r")
+    return pathlib.Path(__file__).parent / "../schemata/ai4-apps-v2.0.0.json"
 
 
 @pytest.fixture
@@ -22,9 +22,7 @@ def invalid_schema_file():
 @pytest.fixture
 def valid_instance():
     """Fixture for a valid instance."""
-    i = open(
-        pathlib.Path(__file__).parent / "../../../instances/sample-v2.mods.json", "r"
-    )
+    i = pathlib.Path(__file__).parent / "../../../instances/sample-v2.mods.json"
     return utils.load_json(i)
 
 
