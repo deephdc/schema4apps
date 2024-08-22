@@ -2,8 +2,10 @@
 
 import pathlib
 from jsonschema import validators
+import jsonschema.exceptions
 import typing
 
+from ai4_metadata import exceptions
 from ai4_metadata import utils
 
 
@@ -22,8 +24,10 @@ def validate(
     try:
         validator = validators.validator_for(schema)
         validator.check_schema(schema)
-    except Exception as e:
-        print(f"Error validating schema: {e}")
-        raise
+    except jsonschema.exceptions.SchemaError as e:
+        raise exceptions.SchemaValidationError(schema_file, e)
 
-    validators.validate(instance, schema)
+    try:
+        validators.validate(instance, schema)
+    except jsonschema.exceptions.ValidationError as e:
+        raise exceptions.MetadataValidationError(instance_file, e)

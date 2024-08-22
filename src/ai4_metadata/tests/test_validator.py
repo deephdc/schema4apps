@@ -3,6 +3,7 @@
 import pathlib
 import pytest
 
+from ai4_metadata import exceptions
 from ai4_metadata import utils
 from ai4_metadata import validate
 
@@ -39,17 +40,17 @@ def test_validator(valid_schema_file, valid_instance):
 
 def test_validator_invalid_instance(valid_schema_file, invalid_instance):
     """Test the validator with an invalid instance."""
-    with pytest.raises(Exception):  # noqa
+    with pytest.raises(exceptions.MetadataValidationError):
         validate.validate(invalid_instance, valid_schema_file)
 
 
 def test_validator_invalid_schema(invalid_schema_file, valid_instance):
     """Test the validator with an invalid schema."""
-    with pytest.raises(Exception):  # noqa
+    with pytest.raises(exceptions.SchemaValidationError):
         validate.validate(valid_instance, invalid_schema_file)
 
 
 def test_validator_invallid_all(invalid_schema_file, invalid_instance):
     """Test the validator with an invalid schema and instance."""
-    with pytest.raises(Exception):  # noqa
+    with pytest.raises(exceptions.SchemaValidationError):
         validate.validate(invalid_instance, invalid_schema_file)
